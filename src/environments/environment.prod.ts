@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  cities: 'https://api.openaq.org/v1/cities'
 };

@@ -1,0 +1,10 @@
+.countrys {
+    padding: 1.5rem;
+}
+mat-expansion-panel {
+    background-color: #fcedf8;
+    &:nth-child(2n) {
+        background-color: #c4fff4;
+    }
+    margin: 0;
+}
