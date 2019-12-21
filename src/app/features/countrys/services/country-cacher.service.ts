@@ -23,4 +23,13 @@ export class CountryCacherService {
     }
   }
 
+  public saveDescriptionForCity(city: City) {
+    this.fetchedCities.forEach(fetchedCity => {
+      const correctCity = fetchedCity.cities.find(fetchedSingleCity => city.name === fetchedSingleCity.name);
+      if (correctCity) {
+        correctCity.description = city.description;
+      }
+    });
+  }
+
 }

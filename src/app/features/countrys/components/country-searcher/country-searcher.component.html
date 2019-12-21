@@ -3,26 +3,30 @@
         <div class="col">
             <div class="row justify-content-center">
                 <div class="col-auto">
-                        <input type="text" [(ngModel)]="countryName" (blur)="fillCountry()">
+                        <input type="text" [(ngModel)]="countryName" (blur)="fillCountry()" class="countrys--input">
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-auto">
-                        <button (click)="changeCountry()">Load cities</button>
+                    <button (click)="changeCountry()" class="countrys--button">Load cities</button>
+                </div>
+                <div class="col-12 text-center">
+                    <p *ngIf="errorMessage" class="countrys__error-message">{{errorMessage}}</p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row w-md-50 mx-auto">
+    <div class="row w-md-50 mx-auto" *ngIf="loadedCities.length > 0">
         <div class="col">
-            <mat-accordion *ngIf="loadedCities.length > 0">
-                <mat-expansion-panel (opened)="panelOpenState = true" *ngFor="let city of loadedCities; let i = index">
+            <mat-accordion>
+                <mat-expansion-panel (opened)="loadDescription(city)" *ngFor="let city of loadedCities; let i = index" [ngClass]="{'bor-t': i === 0}">
                     <mat-expansion-panel-header>
                     <mat-panel-title>
                         {{i + 1}}. {{city.name}}
                     </mat-panel-title>
                     </mat-expansion-panel-header>
-                    <p>I'm visible because I am open</p>
+                    <div *ngIf="city.description" [innerHTML] ='city.description'></div>
+                    <p *ngIf="city.description && city.description.length === 0">Nie udało się pobrać opisu</p>
                 </mat-expansion-panel>
             </mat-accordion>
         </div>

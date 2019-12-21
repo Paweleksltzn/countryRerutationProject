@@ -1,10 +1,69 @@
+$primary-color: #C40C23;
+
 .countrys {
     padding: 1.5rem;
+    &__error-message {
+        color: red;
+    }
+    &--input {
+        border: 2px solid lightgrey;
+        border-bottom-width: 3px;
+        border-radius: 8px;
+        padding: .5rem;
+        min-width: 25%;
+        transition: all .4s;
+        &:focus {
+            border-color: $primary-color;
+        };
+    }
+    &--button {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin: 1rem;
+        position: relative;
+        display: block;
+        background-color: $primary-color;
+        border:none;
+        border-radius: .5rem;
+        color:#fff;
+        text-transform: uppercase;
+        z-index:2;
+        padding-top: .4rem;
+        padding-bottom: .4rem;
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            top:0;
+            border-radius: .5rem;
+            left:0;
+            right:0;
+            bottom:0;
+            background-color: $primary-color;
+            opacity: 1;
+            transition: all .5s;
+            z-index:-1;
+        }
+        &:hover {
+            color: #fff;
+            &::after {
+                transform: scale(1.1,1.5);
+                opacity: 0;
+            }
+        }
+    }
 }
 mat-expansion-panel {
-    background-color: #fcedf8;
-    &:nth-child(2n) {
-        background-color: #c4fff4;
-    }
+    background-color: #dfdfdf;
+    color: black;
     margin: 0;
+    &:nth-child(2n) {
+        background-color: #eee;
+    }
+}
+mat-expansion-panel-header {
+    border-bottom: 1px solid black;
 }
